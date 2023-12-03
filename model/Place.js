@@ -4,6 +4,7 @@ class Place {
     this.location = location;
     this.address = address;
     this.imageUri = imageUri;
+    id: Date.now() + Math.random();
   }
 }
 
