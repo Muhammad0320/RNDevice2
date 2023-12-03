@@ -1,9 +1,7 @@
+import PlacesForm from "../components/places/PlacesForm";
+
 function AddPlace() {
-  return (
-    <>
-      <Text> Add place screen </Text>
-    </>
-  );
+  return <PlacesForm />;
 }
 
 export default AddPlace;
