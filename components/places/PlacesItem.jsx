@@ -1,11 +1,17 @@
-import { Text } from "react-native";
+import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-function PlacesItem() {
+function PlacesItem({ imageUri, title, address }) {
   return (
-    <>
-      <Text> Places item </Text>
-    </>
+    <Pressable>
+      <Image source={{ uri: imageUri }} />
+      <View>
+        <Text> {title} </Text>
+        <Text> {address} </Text>
+      </View>
+    </Pressable>
   );
 }
 
 export default PlacesItem;
+
+const styles = StyleSheet.create({});
