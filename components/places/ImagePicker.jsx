@@ -15,12 +15,15 @@ function ImagePicker() {
 
   const verifyPermission = async () => {
     if (cameraPermisssionInfo.status === PermissionStatus.UNDETERMINED) {
+      console.log("access undeternined");
+
       const PermissionResnponse = await requestPermission();
 
       return PermissionResnponse.granted;
     }
 
     if (cameraPermisssionInfo.status === PermissionStatus.DENIED) {
+      console.log("access denied");
       Alert.alert(
         "Insufficient Permission",
         "You need to grant camera permission to use this app effectively"
@@ -28,6 +31,8 @@ function ImagePicker() {
 
       return false;
     }
+
+    console.log("Lets see");
 
     return true;
   };
