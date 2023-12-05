@@ -6,22 +6,19 @@ import {
 import { Alert, Button, View } from "react-native";
 
 function ImagePicker() {
-  const [cameraPermissionInfo, requestPermission] = useCameraPermissions();
+  const [cameraPermisssionInfo, requestPermission] = useCameraPermissions();
 
   const verifyPermission = async () => {
-    if (cameraPermissionInfo.status === PermissionStatus.UNDETERMINED) {
-      console.log("Access granted");
+    if (cameraPermisssionInfo.status === PermissionStatus.UNDETERMINED) {
+      const PermissionResnponse = await requestPermission();
 
-      const requestPermit = await requestPermission();
-
-      return requestPermit.granted;
+      return PermissionResnponse.granted;
     }
 
-    if (cameraPermissionInfo.status === PermissionStatus.DENIED) {
-      console.log("Access denied");
+    if (cameraPermisssionInfo.status === PermissionStatus.DENIED) {
       Alert.alert(
-        "Insufficient permission",
-        "This app need camera permisstion to function properly"
+        "Insufficient Permission",
+        "You need to grant camera permission to use this app effectively"
       );
 
       return false;
@@ -34,7 +31,7 @@ function ImagePicker() {
     const hasPermission = await verifyPermission();
 
     if (!hasPermission) {
-      return false;
+      return;
     }
 
     const image = await launchCameraAsync({
