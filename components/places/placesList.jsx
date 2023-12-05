@@ -3,7 +3,7 @@ import PlacesItem from "./PlacesItem";
 import { Colors } from "../../util/colors";
 
 function PlacesList({ places = [] }) {
-  if (!PlacesItem.length) {
+  if (!places.length) {
     return (
       <View style={styles.fallbackContainer}>
         <Text style={styles.text}>
@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignContent: "center",
-    color: Colors.primary200,
   },
 
   text: {
     fontSize: 18,
+    textAlign: "center",
+    color: Colors.primary200,
   },
 });
