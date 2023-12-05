@@ -45,7 +45,6 @@ function ImagePicker() {
 
   return (
     <View>
-      <View></View>
       <Button title="Take image" onPress={handleTakeImage} />
     </View>
   );
