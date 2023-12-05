@@ -47,15 +47,15 @@ function ImagePicker() {
     setImagePreview(image.uri);
   };
 
-  let content = <Text> No image yet, add image to preview </Text>;
+  let content = <Text>No image yet, add image to preview</Text>;
 
   if (imagePreview) {
-    content = <Image source={{ uri: imagePreview }} />;
+    content = <Image style={styles.image} source={{ uri: imagePreview }} />;
   }
 
   return (
     <View>
-      <View> </View>
+      <View style={styles.container}>{content}</View>
       <Button title="Take image" onPress={handleTakeImage} />
     </View>
   );
