@@ -1,6 +1,7 @@
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import OutlinedButton from "../ui/OutlinedButton";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
   useForegroundPermissions,
   PermissionStatus,
@@ -14,6 +15,8 @@ function LocationPicker() {
 
   const [locationPermissionInformation, requestPermissions] =
     useForegroundPermissions();
+
+  const navigation = useNavigation();
 
   const verifyLocation = async () => {
     if (
@@ -51,7 +54,9 @@ function LocationPicker() {
     });
   };
 
-  const handlePickLocation = () => {};
+  const handlePickLocation = () => {
+    navigation.navigate("Map");
+  };
 
   let content = <Text>There is no location yet - start by picking one</Text>;
 
