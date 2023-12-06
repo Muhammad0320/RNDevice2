@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { StyleSheet } from "react-native";
+import { useCallback, useLayoutEffect, useState } from "react";
+import { Alert, StyleSheet } from "react-native";
 import { Marker } from "react-native-maps";
 
 import MapView from "react-native-maps";
+import IconButton from "../components/ui/IconButton";
 
-function Map() {
+function Map({ navigation }) {
   const [selectedLocation, setSelectedLocation] = useState({});
 
   const initialPosition = {
@@ -21,6 +22,30 @@ function Map() {
   };
 
   // 8.4911976,4.6700633
+
+  const handlePickedLocation = useCallback(() => {
+    if (!selectedLocation) {
+      return Alert.alert(
+        "No licked location",
+        "You have not picked any location - start by clicking any position on the map"
+      );
+    }
+
+    navigation.navigate("AddPlaces", { coord: selectedLocation });
+  }, [navigation, selectedLocation]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: ({ tintColor }) => (
+        <IconButton
+          color={tintColor}
+          onPress={handlePickedLocation}
+          size={24}
+          icon="save"
+        />
+      ),
+    });
+  }, []);
 
   return (
     <MapView
