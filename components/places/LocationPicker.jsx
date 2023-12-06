@@ -1,4 +1,4 @@
-import { Alert, Image, StyleSheet, View } from "react-native";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import OutlinedButton from "../ui/OutlinedButton";
 import { useState } from "react";
 import {
@@ -7,6 +7,7 @@ import {
   getCurrentPositionAsync,
 } from "expo-location";
 import { getLocationPreview } from "../../util/location";
+import { Colors } from "../../util/colors";
 
 function LocationPicker() {
   const [locationPosition, setLocationPosition] = useState({});
@@ -52,11 +53,14 @@ function LocationPicker() {
 
   const handlePickLocation = () => {};
 
-  let content = <Text> There is no location yet - start by picking one </Text>;
+  console.log(locationPosition);
+
+  let content = <Text>There is no location yet - start by picking one</Text>;
 
   if (locationPosition) {
     content = (
       <Image
+        style={styles.image}
         source={{
           uri: getLocationPreview(locationPosition.lat, locationPosition.lng),
         }}
@@ -100,5 +104,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     columnGap: 4,
+  },
+
+  image: {
+    height: "100%",
+    width: "100%",
+    objectFit: "cover",
   },
 });
