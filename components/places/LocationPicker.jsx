@@ -53,8 +53,6 @@ function LocationPicker() {
 
   const handlePickLocation = () => {};
 
-  console.log(locationPosition);
-
   let content = <Text>There is no location yet - start by picking one</Text>;
 
   if (locationPosition) {

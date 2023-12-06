@@ -50,6 +50,8 @@ function ImagePicker() {
       quality: 0.6,
     });
 
+    console.log(image);
+
     setImagePreview(image.uri);
   };
 
