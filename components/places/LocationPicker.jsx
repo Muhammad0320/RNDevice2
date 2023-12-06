@@ -1,14 +1,15 @@
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
-import OutlinedButton from "../ui/OutlinedButton";
 import { useState } from "react";
+import { Colors } from "../../util/colors";
+import OutlinedButton from "../ui/OutlinedButton";
 import { useNavigation } from "@react-navigation/native";
+import { getLocationPreview } from "../../util/location";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
+
 import {
   useForegroundPermissions,
   PermissionStatus,
   getCurrentPositionAsync,
 } from "expo-location";
-import { getLocationPreview } from "../../util/location";
-import { Colors } from "../../util/colors";
 
 function LocationPicker() {
   const [locationPosition, setLocationPosition] = useState({});
