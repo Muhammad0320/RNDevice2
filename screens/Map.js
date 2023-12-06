@@ -45,7 +45,7 @@ function Map({ navigation }) {
         />
       ),
     });
-  }, []);
+  }, [handlePickedLocation, navigation]);
 
   return (
     <MapView
