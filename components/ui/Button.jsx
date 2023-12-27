@@ -3,8 +3,11 @@ import { Colors } from "../../util/colors";
 
 function Button({ children, onPress }) {
   return (
-    <Pressable onPress={onPress}>
-      <Text>{children}</Text>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+    >
+      <Text style={styles.text}>{children}</Text>
     </Pressable>
   );
 }
