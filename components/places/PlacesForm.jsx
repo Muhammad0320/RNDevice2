@@ -26,11 +26,15 @@ function PlacesForm() {
     setPickedImage(enteredImage);
   };
 
-  const handlePcickLocation = useCallback((enteredLocation) => {
+  const handlePickLocation = useCallback((enteredLocation) => {
     setPickedLocation(enteredLocation);
   }, []);
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    console.log(label);
+    console.log(pickedImage);
+    console.log(pickedLocation);
+  };
 
   return (
     <ScrollView style={styles.form}>
@@ -43,8 +47,8 @@ function PlacesForm() {
           value={label}
         />
       </View>
-      <ImagePicker />
-      <LocationPicker />
+      <ImagePicker onTakeImage={handleTakeImage} />
+      <LocationPicker onPickLocation={handlePickLocation} />
       <Button onPress={handleSubmit}>Add Place</Button>
     </ScrollView>
   );
