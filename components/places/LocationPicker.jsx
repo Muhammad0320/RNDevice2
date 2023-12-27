@@ -6,7 +6,7 @@ import {
   useRoute,
   useIsFocused,
 } from "@react-navigation/native";
-import { getLocationPreview } from "../../util/location";
+import { getAddress, getLocationPreview } from "../../util/location";
 import { Alert, Image, StyleSheet, Text, View } from "react-native";
 
 import {
@@ -73,7 +73,15 @@ function LocationPicker({ onPickLocation }) {
   }, [isFocused, route.params]);
 
   useEffect(() => {
-    onPickLocation(locationPosition);
+    const getAddressF = async () => {
+      if (locationPosition) {
+        const address = await getAddress(...locationPosition);
+
+        onPickLocation({ ...locationPosition, address });
+      }
+    };
+
+    getAddressF();
   }, [locationPosition, onPickLocation]);
 
   const handlePickLocation = () => {
