@@ -4,11 +4,11 @@ import {
   PermissionStatus,
 } from "expo-image-picker";
 import { useState } from "react";
-import { Alert, Image, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../util/colors";
 import OutlinedButton from "../ui/OutlinedButton";
+import { Alert, Image, StyleSheet, Text, View } from "react-native";
 
-function ImagePicker() {
+function ImagePicker({ onTakeImage }) {
   const [cameraPermisssionInfo, requestPermission] = useCameraPermissions();
 
   const [imagePreview, setImagePreview] = useState("");
@@ -51,6 +51,8 @@ function ImagePicker() {
     });
 
     console.log(image);
+
+    onTakeImage(image.uri);
 
     setImagePreview(image.uri);
   };
