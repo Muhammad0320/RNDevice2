@@ -15,7 +15,7 @@ import {
   getCurrentPositionAsync,
 } from "expo-location";
 
-function LocationPicker() {
+function LocationPicker({ onPickLocation }) {
   const [locationPosition, setLocationPosition] = useState({});
 
   const [locationPermissionInformation, requestPermissions] =
@@ -71,6 +71,10 @@ function LocationPicker() {
       });
     }
   }, [isFocused, route.params]);
+
+  useEffect(() => {
+    onPickLocation(locationPosition);
+  }, [locationPosition, onPickLocation]);
 
   const handlePickLocation = () => {
     navigation.navigate("Map");
