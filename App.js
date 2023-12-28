@@ -1,15 +1,13 @@
-import { StatusBar } from "expo-status-bar";
-
-import { NavigationContainer } from "@react-navigation/native";
-
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import AllPlaces from "./screens/AllPlaces";
-import AddPlace from "./screens/AddPlace";
-import IconButton from "./components/ui/IconButton";
-import { Colors } from "./util/colors";
 import Map from "./screens/Map";
-import { useEffect, useState } from "react";
 import { init } from "./util/database";
+import { Colors } from "./util/colors";
+import AddPlace from "./screens/AddPlace";
+import { StatusBar } from "expo-status-bar";
+import AllPlaces from "./screens/AllPlaces";
+import { useEffect, useState } from "react";
+import IconButton from "./components/ui/IconButton";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 
