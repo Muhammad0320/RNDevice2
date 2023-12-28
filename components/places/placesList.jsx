@@ -43,5 +43,6 @@ const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
     marginHorizontal: 6,
+    rowGap: 4,
   },
 });
