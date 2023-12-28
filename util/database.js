@@ -19,15 +19,15 @@ export const init = () => {
     
             ) `,
         [],
-        (data) => {
-          resolve(data);
+        () => {
+          resolve();
         },
-        (error) => {
+        (_, error) => {
           reject(error);
         }
       );
     });
   });
 
-  promise();
+  return promise;
 };
