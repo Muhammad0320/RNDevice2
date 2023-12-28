@@ -3,11 +3,13 @@ import { Colors } from "../../util/colors";
 
 function PlacesItem({ imageUri, title, address }) {
   return (
-    <Pressable>
-      <Image source={{ uri: imageUri }} />
-      <View>
-        <Text> {title} </Text>
-        <Text> {address} </Text>
+    <Pressable
+      style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+    >
+      <Image source={{ uri: imageUri }} style={styles.image} />
+      <View style={styles.textContainer}>
+        <Text style={styles.title}> {title} </Text>
+        <Text style={styles.address}> {address} </Text>
       </View>
     </Pressable>
   );
