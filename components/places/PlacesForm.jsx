@@ -10,8 +10,9 @@ import { Colors } from "../../util/colors";
 import { useCallback, useState } from "react";
 import ImagePicker from "./ImagePicker";
 import LocationPicker from "./LocationPicker";
+import Place from "../../model/Place";
 
-function PlacesForm() {
+function PlacesForm({ onSaveData }) {
   const [label, setLabel] = useState("");
 
   const [pickedImage, setPickedImage] = useState("");
@@ -31,9 +32,9 @@ function PlacesForm() {
   }, []);
 
   const handleSubmit = () => {
-    console.log(label);
-    console.log(pickedImage);
-    console.log(pickedLocation);
+    const data = new Place(label, pickedLocation, pickedImage);
+
+    onSaveData(data);
   };
 
   return (
