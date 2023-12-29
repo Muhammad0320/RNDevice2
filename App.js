@@ -9,6 +9,8 @@ import IconButton from "./components/ui/IconButton";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import AppLoading from "expo-app-loading";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -19,7 +21,7 @@ export default function App() {
   });
 
   if (!dbinitialize) {
-    return;
+    return <AppLoading />;
   }
 
   return (
