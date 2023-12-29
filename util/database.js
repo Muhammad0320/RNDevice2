@@ -12,10 +12,10 @@ export const init = () => {
                     CREATE TABLE IF NOT EXISTS places (
                         id INTEGER PRIMARY KEY NOT NULL,
                         title TEXT NOT NULL,
-                        lat REAL NOT NULL,
-                        lng REAL NOT NULL,
                         imageUri TEXT NOT NULL,
                         address TEXT NOT NULL
+                        lat REAL NOT NULL,
+                        lng REAL NOT NULL,
     
             ) `,
         [],
@@ -27,6 +27,31 @@ export const init = () => {
         }
       );
     });
+  });
+
+  return promise;
+};
+
+export const insertPlace = (place) => {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) =>
+      tx.executeSql(
+        "INSERT DATA TO place (title, imageUri, address, lat, lng) (?, ?, ?, ?, ?) ",
+        [
+          place.title,
+          place.imageUri,
+          place.address,
+          place.location.lat,
+          place.location.lng,
+        ],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, error) => {
+          reject(error);
+        }
+      )
+    );
   });
 
   return promise;
