@@ -1,4 +1,5 @@
 import * as SQLite from "expo-sqlite";
+import Place from "../model/Place";
 
 const database = SQLite.openDatabase("place.db");
 
@@ -64,6 +65,15 @@ export const fetchData = () => {
         "SELECT * FROM places",
         [],
         (_, result) => {
+          const places = [];
+
+          for (const { id, title, imageUri, lat, lng, address } of result.rows
+            ._array) {
+            const place = new Place(title, { address, lat, lng }, imageUri, id);
+
+            places.push(place);
+          }
+
           resolve(result);
         },
         (_, error) => {
