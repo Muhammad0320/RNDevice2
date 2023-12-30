@@ -1,10 +1,18 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { Colors } from "../../util/colors";
 
-function PlacesItem({ imageUri, title, address }) {
+function PlacesItem({ imageUri, title, address, id }) {
+  const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("PlaceDetails", { id });
+  };
+
   return (
     <Pressable
       style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+      onPress={onPress}
     >
       <Image source={{ uri: imageUri }} style={styles.image} />
       <View style={styles.textContainer}>
