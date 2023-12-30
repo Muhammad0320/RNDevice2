@@ -9,9 +9,9 @@ function PlaceDetails() {
     <ScrollView>
       <Image style={styles.image} />
 
-      <View>
-        <View>
-          <Text>Adress</Text>
+      <View style={styles.locationContainer}>
+        <View style={styles.addressContainer}>
+          <Text style={styles.text}>Adress</Text>
         </View>
 
         <OutlinedButton icon="map" onPress={onViewMap}>
