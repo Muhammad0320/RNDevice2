@@ -1,9 +1,32 @@
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../util/colors";
 import OutlinedButton from "../components/ui/OutlinedButton";
+import { useEffect, useState } from "react";
+import { fetchPlaceDetails } from "../util/database";
 
-function PlaceDetails() {
-  const onViewMap = () => {};
+function PlaceDetails({ navigation, route }) {
+  const [detailsData, setDetailsData] = useState({});
+
+  const { id } = route.params;
+
+  useEffect(() => {
+    const loadData = async () => {
+      const places = await fetchPlaceDetails(id);
+
+      setDetailsData(places);
+    };
+
+    loadData();
+  });
+
+  if (!detailsData) {
+    return (
+      <View>
+        {" "}
+        <Text> Loading Place Details... </Text>{" "}
+      </View>
+    );
+  }
 
   return (
     <ScrollView>
@@ -45,5 +68,11 @@ const styles = StyleSheet.create({
     color: Colors.primary500,
     fontWeight: "bold",
     fontSize: 16,
+  },
+
+  fallBackContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
