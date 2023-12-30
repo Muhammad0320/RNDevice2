@@ -17,11 +17,13 @@ function PlaceDetails({ navigation, route }) {
     };
 
     loadData();
+
+    navigation.setOptions({ title: detailsData.title });
   });
 
   if (!detailsData) {
     return (
-      <View>
+      <View style={styles.fallBackContainer}>
         {" "}
         <Text> Loading Place Details... </Text>{" "}
       </View>
