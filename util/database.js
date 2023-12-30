@@ -101,4 +101,6 @@ export const fetchPlaceDetails = (id) => {
       )
     );
   });
+
+  return promise;
 };
