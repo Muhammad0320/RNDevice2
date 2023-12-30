@@ -11,8 +11,8 @@ function PlaceDetails({ navigation, route }) {
 
   const onViewMap = () => {
     navigation.navigate("Map", {
-      lat: detailsData.location,
-      lng: detailsData.location,
+      lat: detailsData.location.lat,
+      lng: detailsData.location.lng,
     });
   };
 
