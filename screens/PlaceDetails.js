@@ -9,6 +9,13 @@ function PlaceDetails({ navigation, route }) {
 
   const { id } = route.params;
 
+  const onViewMap = () => {
+    navigation.navigate("Map", {
+      lat: detailsData.location,
+      lng: detailsData.location,
+    });
+  };
+
   useEffect(() => {
     const loadData = async () => {
       const places = await fetchPlaceDetails(id);
