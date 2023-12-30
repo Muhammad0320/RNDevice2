@@ -1,9 +1,8 @@
-import { useCallback, useLayoutEffect, useState } from "react";
-import { Alert, StyleSheet } from "react-native";
-import { Marker } from "react-native-maps";
-
 import MapView from "react-native-maps";
+import { Marker } from "react-native-maps";
+import { Alert, StyleSheet } from "react-native";
 import IconButton from "../components/ui/IconButton";
+import { useCallback, useLayoutEffect, useState } from "react";
 
 function Map({ navigation, route }) {
   const initialCoords = route.params && {
