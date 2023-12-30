@@ -32,11 +32,11 @@ function PlaceDetails({ navigation, route }) {
 
   return (
     <ScrollView>
-      <Image style={styles.image} />
+      <Image style={styles.image} source={{ uri: detailsData.imageUri }} />
 
       <View style={styles.locationContainer}>
         <View style={styles.addressContainer}>
-          <Text style={styles.text}>Adress</Text>
+          <Text style={styles.text}>{detailsData.address}</Text>
         </View>
 
         <OutlinedButton icon="map" onPress={onViewMap}>
